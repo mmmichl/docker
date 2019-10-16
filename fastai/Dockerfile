@@ -1,6 +1,6 @@
 ## something
 # from https://github.com/Paperspace/fastai-docker/blob/master/fastai-v3/Dockerfile
-FROM pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
+FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-runtime
 
 ENV LANG C.UTF-8
 LABEL com.nvidia.volumes.needed="nvidia_driver"
