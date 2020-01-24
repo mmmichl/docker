@@ -6,7 +6,7 @@ docker run -u $(id -u):$(id -g) --gpus all \
   -e JUPYTER_TOKEN="power" \
   `# 4x shm size does not help?! --shm-size 268435456` \
   --ipc=host \
-  --name fastai-notebook -v $(realpath ~/notebooks):/notebooks -v $(realpath ~/.fastai):/home/.fastai \
+  --name fastai-lab -v $(realpath ~/notebooks):/notebooks -v $(realpath ~/.fastai):/home/.fastai \
   -p 8889:8888 \
   fastai
 

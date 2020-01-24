@@ -5,9 +5,10 @@ FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-runtime
 ENV LANG C.UTF-8
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 LABEL maintainer="Michael Ressmann"
+LABEL version=2
 
 RUN pip install fastai \
-      jupyter ipykernel\
+      jupyter jupyterlab ipykernel\
       Pillow scipy matplotlib seaborn pandas scikit-learn scikit-image scipy \
       && \
       python -m ipykernel.kernelspec
@@ -20,4 +21,4 @@ EXPOSE 8888
 
 WORKDIR "/notebooks"
 
-CMD sh -c 'jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root'
+CMD sh -c 'jupyter lab --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root'
