@@ -15,11 +15,11 @@ RUN pip install fastai nbdev \
 
 # install Pillow-SIMD and libjpeg-turbo
 # https://docs.fast.ai/performance.html#installation
-RUN conda uninstall -y --force pillow pil jpeg libtiff libjpeg-turbo && \
-    pip   uninstall -y         pillow pil jpeg libtiff libjpeg-turbo && \
-    conda install -yc conda-forge libjpeg-turbo && \
-    CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reinstall --no-binary :all: --compile pillow-simd && \
-    conda install -y jpeg libtiff
+#RUN conda uninstall -y --force pillow pil jpeg libtiff libjpeg-turbo && \
+#    pip   uninstall -y         pillow pil jpeg libtiff libjpeg-turbo && \
+#    conda install -yc conda-forge libjpeg-turbo && \
+#    CFLAGS="${CFLAGS} -mavx2" pip install --upgrade --no-cache-dir --force-reinstall --no-binary :all: --compile pillow-simd && \
+#    conda install -y jpeg libtiff
 
 RUN mkdir /notebooks; chmod 777 /notebooks
 RUN chmod 777 /home
@@ -29,4 +29,4 @@ EXPOSE 8888
 
 WORKDIR "/notebooks"
 
-CMD sh -c 'jupyter lab --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root'
+CMD sh -c 'jupyter lab --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root --debug'
