@@ -38,4 +38,9 @@ EXPOSE 8888
 
 WORKDIR "/notebooks"
 
+RUN jupyter contrib nbextension install --system
+
+# does not work here, see start.sh
+#RUN jupyter nbextension enable collapsible_headings/main
+
 CMD sh -c 'jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root --debug'

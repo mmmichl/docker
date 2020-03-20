@@ -12,3 +12,6 @@ docker run -u $(id -u):$(id -g) --gpus all \
 
 # for follwing error: RuntimeError: unable to write to file </torch_...>
 #  see https://discuss.pytorch.org/t/unable-to-write-to-file-torch-18692-1954506624/9990
+
+# enable jupyter notebook extensions
+docker exec fastai2 jupyter nbextension enable collapsible_headings/main
