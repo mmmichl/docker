@@ -1,1 +1,1 @@
-docker build -t tf -f tf-gpu .
+docker build -t tf-notebook .
