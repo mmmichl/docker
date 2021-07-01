@@ -3,6 +3,8 @@
 docker run \
   -u $(id -u):$(id -g) \
   --gpus all \
+  `# fix for https://github.com/NVIDIA/nvidia-docker/issues/1447` \
+  --device /dev/nvidia0 --device /dev/nvidia-uvm --device /dev/nvidia-uvm-tools --device /dev/nvidiactl \
   `# -it` \
   -d --restart=unless-stopped \
   -e JUPYTER_TOKEN="power" \
