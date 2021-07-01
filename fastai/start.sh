@@ -1,12 +1,18 @@
 # script to run the image as a service
 
-docker run -u $(id -u):$(id -g) --gpus all \
+docker run \
+  -u $(id -u):$(id -g) \
+  --gpus all \
   `# -it` \
   -d --restart=unless-stopped \
   -e JUPYTER_TOKEN="power" \
   `# 4x shm size does not help?! --shm-size 268435456` \
-  --ipc=host \
-  --name fastai-lab -v $(realpath ~/notebooks):/notebooks -v $(realpath ~/.fastai):/home/.fastai \
+  --shm-size 1073741824 `# 256 MB was not sufficient` \
+  `#--ipc=host` \
+  --name fastai \
+  -v $(realpath ~/notebooks):/workspace/notebooks \
+  -v $(realpath ~/.fastai):/workspace/.fastai \
+  -v $(realpath ~/.cache/torch/):/workspace/.cache/torch/ \
   -p 8889:8888 \
   fastai
 

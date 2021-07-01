@@ -7,7 +7,7 @@ docker run -u $(id -u):$(id -g) --gpus all \
   `# 4x shm size does not help?! --shm-size 268435456` \
   --ipc=host \
   -v $(realpath ~/notebooks):/tf/notebooks \
-  -p 8889:8888 \
+  -p 8887:8888 \
   --name tf-notebook \
   tf-notebook
 
