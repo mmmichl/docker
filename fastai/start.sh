@@ -9,7 +9,7 @@ docker run \
   -d --restart=unless-stopped \
   -e JUPYTER_TOKEN="power" \
   `# 4x shm size does not help?! --shm-size 268435456` \
-  --shm-size 1073741824 `# 256 MB was not sufficient` \
+  --shm-size 2G `# 256 MB was not sufficient` \
   `#--ipc=host` \
   --name fastai \
   -v $(realpath ~/notebooks):/workspace/notebooks \
